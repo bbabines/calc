@@ -49,7 +49,7 @@ button {
     font-size:large;
 }
 
-#button-body {
+.button-body {
     height: 250px;
     width: 370px;
     display: inline-grid;
