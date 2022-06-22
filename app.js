@@ -33,8 +33,41 @@ const operators = document.querySelectorAll(".operator");
   const handleOperator = (op) => {
     currentOperator = op;
     previousNum = currentNum;
-    previousNumberDisplay.textContent = previousNum;
+    previousNumberDisplay.textContent = previousNum + " " + op;
     currentNum = "";
     currentDisplayNumber.textContent = "";
   };
 
+  equal.addEventListener("click", (e) => {
+    calculate();
+  });
+
+const calculate = (num1, op, num2) => {
+  num1 = previousNumberDisplay.textContent;
+  op = currentOperator;
+  num2 = currentDisplayNumber.textContent
+
+    if (currentOperator === "+") {
+    currentDisplayNumber.textContent = parseFloat(num1) + parseFloat(num2)
+    previousNumberDisplay.textContent = num1 + " " + num2 + " " + "=";
+    
+    } else if (currentOperator === "-") {
+      currentDisplayNumber.textContent = parseFloat(num1) - parseFloat(num2)
+    previousNumberDisplay.textContent = num1 + " " + num2 + " " + "=";
+
+    } else if (currentOperator === "/") {
+    currentDisplayNumber.textContent = parseFloat(num1) / parseFloat(num2)
+    previousNumberDisplay.textContent = num1 + " " + num2 + " " + "=";
+
+    } else if (currentOperator === "*") {
+      currentDisplayNumber.textContent = parseFloat(num1) * parseFloat(num2)
+    previousNumberDisplay.textContent = num1 + " " + num2 + " " + "=";
+    };
+};
+
+// Adds decimal but disappears after next number. ?Relocate fxn
+decimal.addEventListener("click", () => {
+  currentDisplayNumber.textContent = currentNum + decimal.textContent;
+});
+
+ 

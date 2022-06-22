@@ -26,6 +26,13 @@
     font-size: 30px;
 }
 
+#previousNumber {
+    font-size: 20px;
+    position: absolute;
+    top: 40px;
+    margin: 10px;
+}
+
 #clear-delete-row {
     display: grid;
     grid-template-columns: auto auto;
