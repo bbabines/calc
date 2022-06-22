@@ -5,8 +5,26 @@ let currentOperator = "";
 const currentDisplayNumber = document.getElementById("currentDisplay");
 const previousNumberDisplay = document.getElementById("previousNumber");
 const equal = document.querySelector(".equal");
+
 const decimal = document.querySelector(".decimal");
+  decimal.addEventListener("click", () => {
+    addDecimal();
+  });
+  const addDecimal = () => {
+    if (!currentNum.includes(".")) {
+      currentNum += ".";
+      currentDisplayNumber.textContent = currentNum;
+    }
+  };
+
 const clear = document.querySelector(".clear");
+  clear.addEventListener("click", (e) => {
+    currentNum = "";
+    previousNum = "";
+    currentOperator = "";
+    currentDisplayNumber.textContent = "0";
+    previousNumberDisplay.textContent = "";
+  });
 
 const numberButtons = document.querySelectorAll(".number")
   numberButtons.forEach((btn) => {
@@ -38,13 +56,20 @@ const operators = document.querySelectorAll(".operator");
     currentDisplayNumber.textContent = "";
   };
 
+  // Added criteria in order for equals to work.
   equal.addEventListener("click", (e) => {
-    calculate();
+    if (previousNum != "" && currentNum != "") {
+      calculate();
+    }
   });
 
 const calculate = (num1, op, num2) => {
+  previousNum = previousNumberDisplay.textContent;
   num1 = previousNumberDisplay.textContent;
+
   op = currentOperator;
+
+  currentNum = currentDisplayNumber.textContent;
   num2 = currentDisplayNumber.textContent
 
     if (currentOperator === "+") {
@@ -63,11 +88,8 @@ const calculate = (num1, op, num2) => {
       currentDisplayNumber.textContent = parseFloat(num1) * parseFloat(num2)
     previousNumberDisplay.textContent = num1 + " " + num2 + " " + "=";
     };
+
 };
 
-// Adds decimal but disappears after next number. ?Relocate fxn
-decimal.addEventListener("click", () => {
-  currentDisplayNumber.textContent = currentNum + decimal.textContent;
-});
 
- 
+
