@@ -21,7 +21,7 @@
 
 }
 
-#contents {
+#currentDisplay {
     margin: 10px;
     font-size: 30px;
 }
@@ -35,7 +35,7 @@
     margin-top: 30px;
 }
 
-#clear {
+.clear {
     background-color: lightgreen;
 }
 
