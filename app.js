@@ -5,6 +5,7 @@ let currentOperator = "";
 const currentDisplayNumber = document.getElementById("currentDisplay");
 const previousNumberDisplay = document.getElementById("previousNumber");
 const equal = document.querySelector(".equal");
+const deleteNumber = document.getElementById("delete");
 
 const decimal = document.querySelector(".decimal");
   decimal.addEventListener("click", () => {
@@ -92,4 +93,9 @@ const calculate = (num1, op, num2) => {
 };
 
 
-
+deleteNumber.addEventListener("click", () => {
+  let currentNum = currentDisplayNumber.textContent;
+  currentNum = currentNum.slice(0, -1);
+  currentDisplayNumber.textContent = currentNum;
+  
+});
