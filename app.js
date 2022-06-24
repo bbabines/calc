@@ -49,6 +49,7 @@ const operators = document.querySelectorAll(".operator");
     });
   });
 
+
   const handleOperator = (op) => {
     currentOperator = op;
     previousNum = currentNum;
@@ -57,12 +58,16 @@ const operators = document.querySelectorAll(".operator");
     currentDisplayNumber.textContent = "";
   };
 
+
   // Added criteria in order for equals to work.
   equal.addEventListener("click", (e) => {
     if (previousNum != "" && currentNum != "") {
       calculate();
+      currentNum = currentDisplayNumber.textContent;
+      previousNum = previousNumberDisplay.textContent;
     }
   });
+
 
 const calculate = (num1, op, num2) => {
   previousNum = previousNumberDisplay.textContent;
@@ -74,7 +79,7 @@ const calculate = (num1, op, num2) => {
   num2 = currentDisplayNumber.textContent
 
     if (currentOperator === "+") {
-    currentDisplayNumber.textContent = parseFloat(num1) + parseFloat(num2)
+    currentDisplayNumber.textContent = parseFloat(num1) + parseFloat(num2);
     previousNumberDisplay.textContent = num1 + " " + num2 + " " + "=";
     
     } else if (currentOperator === "-") {
@@ -89,7 +94,6 @@ const calculate = (num1, op, num2) => {
       currentDisplayNumber.textContent = parseFloat(num1) * parseFloat(num2)
     previousNumberDisplay.textContent = num1 + " " + num2 + " " + "=";
     };
-
 };
 
 
@@ -97,5 +101,4 @@ deleteNumber.addEventListener("click", () => {
   let currentNum = currentDisplayNumber.textContent;
   currentNum = currentNum.slice(0, -1);
   currentDisplayNumber.textContent = currentNum;
-  
 });
